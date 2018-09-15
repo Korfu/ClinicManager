@@ -1,17 +1,40 @@
 ﻿using ClinicManager.Model;
+using ClinicManager.Utility;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Input;
 
 namespace ClinicManager.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        public ICommand EditCommand { get; set; }
+
+        private void Edit(object param)
+        {
+            PatientDetailView view = new PatientDetailView();
+            ViewModelLocator.PatientDetailViewModel.selectedPatient = selectedPatient;
+            view.ShowDialog();
+        }
+
+        private bool CanEdit(object param)
+        {
+            if (selectedPatient != null)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
         public MainWindowViewModel()
         {
+            EditCommand = new CustomCommand(Edit,CanEdit);
             AllPatients = new ObservableCollection<PatientViewModel>();
             var allPatients = LoadFromFile();
             foreach (var patient in allPatients)

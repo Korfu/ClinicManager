@@ -25,12 +25,12 @@ namespace ClinicManager
             DataContext = ViewModelLocator.MainWindowViewModel;
         }
 
-        private void MenuItem_Edit(object sender, RoutedEventArgs e)
-        {
-            PatientDetailView detailView = new PatientDetailView();
-            ViewModelLocator.PatientDetailViewModel.selectedPatient = ((PatientViewModel) PatientsListBox.SelectedItem);
-            detailView.ShowDialog();
-        }
+        //private void MenuItem_Edit(object sender, RoutedEventArgs e)
+        //{
+        //    PatientDetailView detailView = new PatientDetailView();
+        //    ViewModelLocator.PatientDetailViewModel.selectedPatient = ((PatientViewModel) PatientsListBox.SelectedItem);
+        //    detailView.ShowDialog();
+        //}
 
         private void MenuItem_SaveAll(object sender, RoutedEventArgs e)
         {

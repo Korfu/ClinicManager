@@ -29,7 +29,7 @@
                     <TextBlock HorizontalAlignment="Left" Margin="394,123,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top"/>
                     <TextBox x:Name="AgeTextBox" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" Text="{Binding selectedPatient.Age, Mode=OneWay}"  VerticalAlignment="Top" Width="310" TextChanged="AgeTextBox_TextChanged"/>
                     <Image x:Name="Photo" HorizontalAlignment="Left" Height="189" Margin="570,150,0,0" VerticalAlignment="Top" Width="187"/>
-                    <Button x:Name="EditButton" IsEnabled="False" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75" />
+                    <Button x:Name="EditButton" Command="{Binding EditCommand}" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,11.6" Width="75" />
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
@@ -39,8 +39,8 @@
         <Menu HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="793">
             <MenuItem Header="Patient">
                 <MenuItem Header="Add"></MenuItem>
-                <MenuItem x:Name="MainManuEditButton" Header="Edit" Click="MenuItem_Edit"></MenuItem>
-                <MenuItem Header="Save All" Click="MenuItem_SaveAll"></MenuItem>
+                <MenuItem x:Name="MainManuEditButton" Command="{Binding EditCommand}" Header="Edit" ></MenuItem>
+                <MenuItem Header="Save All" ></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>
