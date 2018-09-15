@@ -39,8 +39,8 @@
         <Menu HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="793">
             <MenuItem Header="Patient">
                 <MenuItem Header="Add"></MenuItem>
-                <MenuItem Header="Edit" Click="MenuItem_Click"></MenuItem>
-                <MenuItem Header="Save All" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem x:Name="MainManuEditButton" Header="Edit" Click="MenuItem_Edit"></MenuItem>
+                <MenuItem Header="Save All" Click="MenuItem_SaveAll"></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>

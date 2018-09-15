@@ -17,7 +17,7 @@ namespace ClinicManager
         public MainWindow()
         {
             InitializeComponent();
-
+            MainManuEditButton.IsEnabled = false;
             PatientsListBox.ItemsSource = LoadFromFile();
         }
 
@@ -45,6 +45,7 @@ namespace ClinicManager
 
         private void PatientsListBox_OnSelected(object sender, RoutedEventArgs e)
         {
+            MainManuEditButton.IsEnabled = true;
             EditButton.IsEnabled = true;
             var selectedPatient = (Patient) ((ListBox) sender).SelectedItem;
             NameTextBox.Text = selectedPatient.FirstName + " " + selectedPatient.SecondName;
@@ -62,14 +63,14 @@ namespace ClinicManager
             detailView.ShowDialog();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Edit(object sender, RoutedEventArgs e)
         {
             PatientDetailView detailView = new PatientDetailView();
             detailView.Patient = ((Patient) PatientsListBox.SelectedItem);
             detailView.ShowDialog();
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItem_SaveAll(object sender, RoutedEventArgs e)
         {
             var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
             {
