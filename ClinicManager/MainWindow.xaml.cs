@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Newtonsoft.Json;
 
 namespace ClinicManager
@@ -59,7 +50,7 @@ namespace ClinicManager
             NameTextBox.Text = selectedPatient.FirstName + " " + selectedPatient.SecondName;
             EmailTextBox.Text = selectedPatient.Email;
             PhoneTextBox.Text = selectedPatient.PhoneNumber;
-            AgeTextBox.Text = ((DateTime.Now - selectedPatient.BirthDate).TotalDays / 365).ToString();
+            AgeTextBox.Text = (DateTime.Now.Year - selectedPatient.BirthDate.Year).ToString();
             InsuranceNumberTextBox.Text = selectedPatient.InsuranceNumber;
             Photo.Source = new BitmapImage(new Uri(selectedPatient.Photo, UriKind.Relative));
         }
@@ -89,6 +80,11 @@ namespace ClinicManager
             {
                 jsonSerializer.Serialize(streamWriter, PatientsListBox.Items);
             }
+        }
+
+        private void AgeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

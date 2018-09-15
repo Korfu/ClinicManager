@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="PatientClinic" Height="Auto" Width="Auto">
     <Grid>
 
         <TabControl HorizontalAlignment="Left" Height="378" Margin="10,33,0,0" VerticalAlignment="Top" Width="773">
@@ -27,7 +27,7 @@
                     <TextBlock HorizontalAlignment="Left" Margin="393,95,0,0" TextWrapping="Wrap" Text="Insurance" VerticalAlignment="Top"/>
                     <TextBox x:Name="InsuranceNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="446,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
                     <TextBlock HorizontalAlignment="Left" Margin="394,123,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top"/>
-                    <TextBox x:Name="AgeTextBox" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310"/>
+                    <TextBox x:Name="AgeTextBox" HorizontalAlignment="Left" Height="23" Margin="447,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="310" TextChanged="AgeTextBox_TextChanged"/>
                     <Image x:Name="Photo" HorizontalAlignment="Left" Height="189" Margin="570,150,0,0" VerticalAlignment="Top" Width="187"/>
                     <Button x:Name="EditButton" IsEnabled="False" Content="Edit" HorizontalAlignment="Left" Margin="394,319,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                 </Grid>

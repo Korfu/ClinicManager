@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicManager"
         mc:Ignorable="d"
-        Title="Edit Details" Height="450" Width="800">
+        Title="Edit Details" Height="572.747" Width="800">
     <ScrollViewer>
         
         <Grid Margin="5">
@@ -39,7 +39,7 @@
             <TextBox Grid.Row="3" Grid.Column="1" Name="DescriptionTextBox" AcceptsReturn="True" Height="75"></TextBox>
             <TextBox Grid.Row="4" Grid.Column="1" Name="PhoneTextBox"></TextBox>
             <TextBox Grid.Row="5" Grid.Column="1" Name="EmailTextBox"></TextBox>
-            <TextBox Grid.Row="6" Grid.Column="1" Name="AgeTextBox"></TextBox>
+            <TextBox Grid.Row="6" Grid.Column="1" Name="AgeTextBox" TextChanged="AgeTextBox_TextChanged"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button Name="SaveButton" Click="SaveButton_Click" Margin="5" Content="Save "></Button>
