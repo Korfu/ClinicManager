@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,27 +20,11 @@ namespace ClinicManager
     /// </summary>
     public partial class PatientDetailView : Window
     {
-        public Patient Patient { get; set; }
 
         public PatientDetailView()
         {
             InitializeComponent();
-            this.Loaded += DetailView_Loaded;
-        }
-
-        void DetailView_Loaded(object sender, RoutedEventArgs e)
-        {
-            DataContext = Patient;
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            //NameLabel.Content = Patient.FirstName + " " + Patient.SecondName;
-            PhoneTextBox.Text = Patient.PhoneNumber;
-            EmailTextBox.Text = Patient.Email;
-            AgeTextBox.Text = (DateTime.Now.Year - Patient.BirthDate.Year).ToString();
-            Image.Source = new BitmapImage(new Uri(Patient.Photo, UriKind.Relative));
+            DataContext = ViewModelLocator.PatientDetailViewModel;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

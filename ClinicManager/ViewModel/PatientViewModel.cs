@@ -21,11 +21,12 @@ namespace ClinicManager.Model
             public DateTimeOffset BirthDate { get; set; }
             public int Age { get
                             {
-                            return DateTime.Now.Year - BirthDate.Year;  
+                        return DateTime.Now.Year - BirthDate.Year;  
                             }
         }
             public string InsuranceNumber { get; set; }
             public string PhoneNumber { get; set; }
             public string Photo { get; set; }
-        }
+            public string Comment { get; set; }
+    }
 }

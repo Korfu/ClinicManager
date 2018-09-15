@@ -1,17 +1,14 @@
 ﻿using ClinicManager.Model;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManager.ViewModel
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
         public MainWindowViewModel()
         {
@@ -23,39 +20,38 @@ namespace ClinicManager.ViewModel
             }
         }
 
-
         public ObservableCollection<PatientViewModel> AllPatients { get; set; }
 
-        private PatientViewModel selectedPatient;
-        public PatientViewModel SelectedPatient
+        private PatientViewModel _selectedPatient;
+        public PatientViewModel selectedPatient
         {
             get
             {
-                return selectedPatient;
+                return _selectedPatient;
             }
             set
             {
-                selectedPatient = value;
+                _selectedPatient = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("SelectedPatient"));
+                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("selectedPatient"));
                 }
             }
         }
 
-        private ObservableCollection<PatientViewModel> patients;
-        public ObservableCollection<PatientViewModel> Patients
+        private ObservableCollection<PatientViewModel> _patients;
+        public ObservableCollection<PatientViewModel> patients
         {
             get
             {
-                return patients;
+                return _patients;
             }
             set
             {
-                patients = value;
+                _patients = value;
                 if(PropertyChanged != null)
                 {
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Patients"));
+                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("patients"));
                 }
             }
         }

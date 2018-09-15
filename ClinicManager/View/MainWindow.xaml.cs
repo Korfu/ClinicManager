@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using ClinicManager.Model;
 using ClinicManager.ViewModel;
 using Newtonsoft.Json;
 
@@ -21,21 +22,13 @@ namespace ClinicManager
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
-            MainManuEditButton.IsEnabled = false;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PatientDetailView detailView = new PatientDetailView();
-            detailView.Patient = ((Patient) PatientsListBox.SelectedItem);
-            detailView.ShowDialog();
+            DataContext = ViewModelLocator.MainWindowViewModel;
         }
 
         private void MenuItem_Edit(object sender, RoutedEventArgs e)
         {
             PatientDetailView detailView = new PatientDetailView();
-            detailView.Patient = ((Patient) PatientsListBox.SelectedItem);
+            ViewModelLocator.PatientDetailViewModel.selectedPatient = ((PatientViewModel) PatientsListBox.SelectedItem);
             detailView.ShowDialog();
         }
 
