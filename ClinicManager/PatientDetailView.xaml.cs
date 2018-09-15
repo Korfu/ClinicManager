@@ -29,12 +29,13 @@ namespace ClinicManager
 
         void DetailView_Loaded(object sender, RoutedEventArgs e)
         {
+            DataContext = Patient;
             LoadData();
         }
 
         private void LoadData()
         {
-            NameLabel.Content = Patient.FirstName + " " + Patient.SecondName;
+            //NameLabel.Content = Patient.FirstName + " " + Patient.SecondName;
             PhoneTextBox.Text = Patient.PhoneNumber;
             EmailTextBox.Text = Patient.Email;
             AgeTextBox.Text = (DateTime.Now.Year - Patient.BirthDate.Year).ToString();

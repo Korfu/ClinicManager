@@ -12,4 +12,6 @@ namespace ClinicManager
         public string PhoneNumber { get; set; }
         public string Photo { get; set; }
     }
+
+    
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using ClinicManager.ViewModel;
 using Newtonsoft.Json;
 
 namespace ClinicManager
@@ -14,46 +16,13 @@ namespace ClinicManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Patient> AllPatients { get; set;  }
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
             MainManuEditButton.IsEnabled = false;
-            PatientsListBox.ItemsSource = LoadFromFile();
-        }
-
-        private Patient[] LoadFromFile()
-        {
-            var allText = File.ReadAllText("samplePatients.json");
-            var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
-            {
-                DateFormatString = "dd/MM/yyyy"
-            });
-            var patients = jsonSerializer.Deserialize<List<Patient>>(new JsonTextReader(new StringReader(allText)));
-            for (var i = 0; i < patients.Count; i++)
-            {
-                var patient = patients[i];
-                patient.Photo = GetPhotoForUser(patient);
-            }
-
-            return patients.ToArray();
-        }
-
-        private static string GetPhotoForUser(Patient patient)
-        {
-            return patient.InsuranceNumber.Last() % 2 == 0 ? "Photos/male.png" : "Photos/female.png";
-        }
-
-        private void PatientsListBox_OnSelected(object sender, RoutedEventArgs e)
-        {
-            MainManuEditButton.IsEnabled = true;
-            EditButton.IsEnabled = true;
-            var selectedPatient = (Patient) ((ListBox) sender).SelectedItem;
-            NameTextBox.Text = selectedPatient.FirstName + " " + selectedPatient.SecondName;
-            EmailTextBox.Text = selectedPatient.Email;
-            PhoneTextBox.Text = selectedPatient.PhoneNumber;
-            AgeTextBox.Text = (DateTime.Now.Year - selectedPatient.BirthDate.Year).ToString();
-            InsuranceNumberTextBox.Text = selectedPatient.InsuranceNumber;
-            Photo.Source = new BitmapImage(new Uri(selectedPatient.Photo, UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
