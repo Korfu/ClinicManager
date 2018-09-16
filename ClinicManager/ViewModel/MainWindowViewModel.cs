@@ -17,6 +17,7 @@ namespace ClinicManager.ViewModel
         public ICommand EditCommand { get; set; }
 
         private DialogService _dialogService;
+        private PatientDataService _patientDataService;
 
         private void Edit(object param)
         {
@@ -37,11 +38,13 @@ namespace ClinicManager.ViewModel
         public MainWindowViewModel()
         {
             _dialogService = new DialogService();
+            _patientDataService = new PatientDataService();
             EditCommand = new CustomCommand(Edit,CanEdit);
             AllPatients = new ObservableCollection<PatientViewModel>();
             Messenger.Default.Register<PatientToBeDeleted>(this, DeleteSelectedPatient);
-            var allPatients = LoadFromFile();
-            foreach (var patient in allPatients)
+            var allPatients = _patientDataService.GetAllPatients();
+            var patientViewModels = allPatients.Select(x => PatientViewModel.FromModel(x));
+            foreach (var patient in patientViewModels)
             {
                 AllPatients.Add(patient);
             }
@@ -49,8 +52,16 @@ namespace ClinicManager.ViewModel
 
         private void DeleteSelectedPatient(PatientToBeDeleted patientToBeDeleted)
         {
-            AllPatients.Remove(patientToBeDeleted.PatientToBeDeletedProperty);
+            //AllPatients.Remove(patientToBeDeleted.PatientToBeDeletedProperty);
+            _patientDataService.DeletePatient(patientToBeDeleted.PatientToBeDeletedProperty);
             _dialogService.ClosePatientsDetailDialog();
+            var allPatients = _patientDataService.GetAllPatients();
+            var patientViewModels = allPatients.Select(x => PatientViewModel.FromModel(x));
+            AllPatients.Clear();
+            foreach (var patient in patientViewModels)
+            {
+                AllPatients.Add(patient);
+            }
         }
 
         public ObservableCollection<PatientViewModel> AllPatients { get; set; }
@@ -92,26 +103,6 @@ namespace ClinicManager.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private PatientViewModel[] LoadFromFile()
-        {
-            var allText = File.ReadAllText("samplePatients.json");
-            var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
-            {
-                DateFormatString = "dd/MM/yyyy"
-            });
-            var patients = jsonSerializer.Deserialize<List<PatientViewModel>>(new JsonTextReader(new StringReader(allText)));
-            for (var i = 0; i < patients.Count; i++)
-            {
-                var patient = patients[i];
-                patient.Photo = GetPhotoForUser(patient);
-            }
-
-            return patients.ToArray();
-        }
-
-        private static string GetPhotoForUser(PatientViewModel patient)
-        {
-            return patient.InsuranceNumber.Last() % 2 == 0 ? "Photos/male.png" : "Photos/female.png";
-        }
+       
     }
 }

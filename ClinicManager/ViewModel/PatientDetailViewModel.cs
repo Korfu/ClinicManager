@@ -17,7 +17,7 @@ namespace ClinicManager.ViewModel
 
         private void Delete(object param)
         {
-            Messenger.Default.Send(new PatientToBeDeleted() { PatientToBeDeletedProperty = selectedPatient});
+            Messenger.Default.Send(new PatientToBeDeleted() { PatientToBeDeletedProperty = selectedPatient.Model});
         }
 
         private bool CanDelete(object param)

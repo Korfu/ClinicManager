@@ -28,15 +28,7 @@ namespace ClinicManager
 
         private void MenuItem_SaveAll(object sender, RoutedEventArgs e)
         {
-            var jsonSerializer = JsonSerializer.Create(new JsonSerializerSettings()
-            {
-                DateFormatString = "dd/MM/yyyy"
-            });
-            File.Delete("samplePatients.json");
-            using (var streamWriter = new StreamWriter(File.OpenWrite("samplePatients.json")))
-            {
-                jsonSerializer.Serialize(streamWriter, PatientsListBox.Items);
-            }
+            
         }
 
         private void AgeTextBox_TextChanged(object sender, TextChangedEventArgs e)

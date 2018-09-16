@@ -9,6 +9,6 @@ namespace ClinicManager.Utilities
 {
     public class PatientToBeDeleted 
     {
-        public PatientViewModel PatientToBeDeletedProperty { get; set; }
+        public Patient PatientToBeDeletedProperty { get; set; }
     }
 }
