@@ -18,6 +18,11 @@ namespace ClinicManager.ViewModel
         {
             PatientDetailView view = new PatientDetailView();
             ViewModelLocator.PatientDetailViewModel.selectedPatient = selectedPatient;
+            //view.
+            //private static string GetPhotoForUser(PatientViewModel patient)
+            //{
+            //    return patient.InsuranceNumber.Last() % 2 == 0 ? "Photos/male.png" : "Photos/female.png";
+            //}
             view.ShowDialog();
         }
 

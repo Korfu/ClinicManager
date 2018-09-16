@@ -19,7 +19,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <TextBlock HorizontalAlignment="Left" Margin="393,11,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-                    <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="447,10,0,0" TextWrapping="Wrap" Text="{Binding selectedPatient.FullName, Mode=OneWay}" VerticalAlignment="Top" Width="310"/>
+                    <TextBox x:Name="NameTextBox"  HorizontalAlignment="Left" Height="23" Margin="447,10,0,0" TextWrapping="Wrap" Text="{Binding selectedPatient.FullName, Mode=OneWay, FallbackValue='Unnamed'}" VerticalAlignment="Top" Width="310"/>
                     <TextBlock HorizontalAlignment="Left" Margin="393,39,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top"/>
                     <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="447,38,0,0" TextWrapping="Wrap" Text="{Binding selectedPatient.Email}" VerticalAlignment="Top" Width="310"/>
                     <TextBlock HorizontalAlignment="Left" Margin="393,67,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top"/>
