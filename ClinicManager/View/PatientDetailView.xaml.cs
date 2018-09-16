@@ -28,11 +28,6 @@ namespace ClinicManager
             DataContext = ViewModelLocator.PatientDetailViewModel;
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -43,9 +38,5 @@ namespace ClinicManager
 
         }
 
-        private void DeleteButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

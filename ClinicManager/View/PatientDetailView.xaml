@@ -42,7 +42,7 @@
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button Name="SaveButton" Click="SaveButton_Click" Margin="5" Content="Save "></Button>
-                <Button Command="{Binding DeleteCommand}" Name="DeleteButton" Margin="5" Content="Delete " Click="DeleteButton_Click_1"></Button>
+                <Button Command="{Binding DeleteCommand}" Name="DeleteButton" Margin="5" Content="Delete"></Button>
             </StackPanel>
 
         </Grid>
