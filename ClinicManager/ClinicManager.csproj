@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="Utilities\CustomCommand.cs" />
     <Compile Include="Utilities\Messenger.cs" />
+    <Compile Include="Utilities\PatientToBeDeleted.cs" />
     <Compile Include="ViewModel\PatientViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Utilities\ViewModelLocator.cs" />

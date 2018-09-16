@@ -6,14 +6,35 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ClinicManager.ViewModel
 {
     public class PatientDetailViewModel : INotifyPropertyChanged
 
     {
+        public ICommand DeleteCommand { get; set; }
+
+        private void Delete(object param)
+        {
+            Messenger.Default.Send(new PatientToBeDeleted() { PatientToBeDeletedProperty = selectedPatient});
+        }
+
+        private bool CanDelete(object param)
+        {
+            if (selectedPatient != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public PatientDetailViewModel()
         {
+            DeleteCommand = new CustomCommand(Delete, CanDelete);
             Messenger.Default.Register<PatientViewModel>(this, SetSelectedPatient);
         }
 

@@ -1,6 +1,7 @@
 ﻿using ClinicManager.Model;
 using ClinicManager.Utilities;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,7 +18,6 @@ namespace ClinicManager.ViewModel
         private void Edit(object param)
         {
             PatientDetailView view = new PatientDetailView();
-            //ViewModelLocator.PatientDetailViewModel.selectedPatient = selectedPatient;
             view.ShowDialog();
         }
 
@@ -36,11 +36,17 @@ namespace ClinicManager.ViewModel
         {
             EditCommand = new CustomCommand(Edit,CanEdit);
             AllPatients = new ObservableCollection<PatientViewModel>();
+            Messenger.Default.Register<PatientToBeDeleted>(this, DeleteSelectedPatient);
             var allPatients = LoadFromFile();
             foreach (var patient in allPatients)
             {
                 AllPatients.Add(patient);
             }
+        }
+
+        private void DeleteSelectedPatient(PatientToBeDeleted patientToBeDeleted)
+        {
+            AllPatients.Remove(patientToBeDeleted.PatientToBeDeletedProperty);
         }
 
         public ObservableCollection<PatientViewModel> AllPatients { get; set; }

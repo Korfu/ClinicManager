@@ -42,5 +42,10 @@ namespace ClinicManager
         {
 
         }
+
+        private void DeleteButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
