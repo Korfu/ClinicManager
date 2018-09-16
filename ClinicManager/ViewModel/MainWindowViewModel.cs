@@ -17,12 +17,7 @@ namespace ClinicManager.ViewModel
         private void Edit(object param)
         {
             PatientDetailView view = new PatientDetailView();
-            ViewModelLocator.PatientDetailViewModel.selectedPatient = selectedPatient;
-            //view.
-            //private static string GetPhotoForUser(PatientViewModel patient)
-            //{
-            //    return patient.InsuranceNumber.Last() % 2 == 0 ? "Photos/male.png" : "Photos/female.png";
-            //}
+            //ViewModelLocator.PatientDetailViewModel.selectedPatient = selectedPatient;
             view.ShowDialog();
         }
 
@@ -64,6 +59,7 @@ namespace ClinicManager.ViewModel
                 {
                     PropertyChanged.Invoke(this, new PropertyChangedEventArgs("selectedPatient"));
                 }
+                Messenger.Default.Send(value);
             }
         }
 

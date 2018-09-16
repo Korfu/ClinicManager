@@ -1,4 +1,5 @@
 ﻿using ClinicManager.Model;
+using ClinicManager.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,16 @@ namespace ClinicManager.ViewModel
     public class PatientDetailViewModel : INotifyPropertyChanged
 
     {
+        public PatientDetailViewModel()
+        {
+            Messenger.Default.Register<PatientViewModel>(this, SetSelectedPatient);
+        }
+
+        private void SetSelectedPatient(PatientViewModel selectedPatientMessage)
+        {
+            selectedPatient = selectedPatientMessage;
+        }
+
         private PatientViewModel _selectedPatient;
         public PatientViewModel selectedPatient
         {
