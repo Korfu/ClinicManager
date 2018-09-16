@@ -43,5 +43,19 @@ namespace ClinicManager.Model
             pvm.Model = model;
             return pvm;
         }
+
+        public Patient ToModel()
+        {
+            Patient patient = new Patient();
+            patient.FirstName = FirstName;
+            patient.BirthDate = BirthDate;
+            patient.Email = Email;
+            patient.PhoneNumber = PhoneNumber;
+            patient.Photo = Photo;
+            patient.SecondName = SecondName;
+            patient.InsuranceNumber = InsuranceNumber;
+            return patient;
+        }
+
     }
 }

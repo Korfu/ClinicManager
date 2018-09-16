@@ -26,6 +26,12 @@ namespace ClinicManager.Services
 
         public void UpdatePatient(Patient toBeUpdated)
         {
+            var currentList = LoadFromFile().ToList();
+            var matchingOne = currentList.Single(x => x.InsuranceNumber == toBeUpdated.InsuranceNumber);
+            int indexOf = currentList.IndexOf(matchingOne);
+            currentList.Insert(indexOf, toBeUpdated);
+            currentList.Remove(matchingOne);
+            Save(currentList);
 
         }
 

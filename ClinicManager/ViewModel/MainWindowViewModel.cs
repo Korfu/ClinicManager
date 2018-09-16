@@ -35,10 +35,11 @@ namespace ClinicManager.ViewModel
             }
         }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(DialogService dialogService,
+                                      PatientDataService patientDataService)
         {
-            _dialogService = new DialogService();
-            _patientDataService = new PatientDataService();
+            _dialogService = dialogService;
+            _patientDataService = patientDataService;
             EditCommand = new CustomCommand(Edit,CanEdit);
             AllPatients = new ObservableCollection<PatientViewModel>();
             Messenger.Default.Register<PatientToBeDeleted>(this, DeleteSelectedPatient);

@@ -1,4 +1,5 @@
 ﻿using ClinicManager.Model;
+using ClinicManager.Services;
 using ClinicManager.Utilities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace ClinicManager.ViewModel
 
     {
         public ICommand DeleteCommand { get; set; }
+        private PatientDataService _patientDataService;
+        private DialogService _dialogService;
 
         private void Delete(object param)
         {
@@ -32,9 +35,34 @@ namespace ClinicManager.ViewModel
             }
         }
 
-        public PatientDetailViewModel()
+        public ICommand UpdateCommand { get; set; }
+
+        private void Update(object param)
+        {
+            _patientDataService.UpdatePatient(selectedPatient.ToModel());
+            _dialogService.ClosePatientsDetailDialog();
+        }
+
+        private bool CanUpdate(object param)
+        {
+            if (selectedPatient != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public PatientDetailViewModel(DialogService dialogService,
+                                      PatientDataService patientDataService)
         {
             DeleteCommand = new CustomCommand(Delete, CanDelete);
+            UpdateCommand = new CustomCommand(Update, CanUpdate);
+            _dialogService = dialogService;
+            _patientDataService = patientDataService;
             Messenger.Default.Register<PatientViewModel>(this, SetSelectedPatient);
         }
 

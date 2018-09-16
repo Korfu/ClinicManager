@@ -41,7 +41,7 @@
             <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding selectedPatient.Age, Mode=OneWay}" Name="AgeTextBox" TextChanged="AgeTextBox_TextChanged"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button Name="SaveButton" Click="SaveButton_Click" Margin="5" Content="Save "></Button>
+                <Button Name="SaveButton" Command="{Binding UpdateCommand}" Margin="5" Content="Update"></Button>
                 <Button Command="{Binding DeleteCommand}" Name="DeleteButton" Margin="5" Content="Delete"></Button>
             </StackPanel>
 
