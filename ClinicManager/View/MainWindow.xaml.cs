@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using ClinicManager.Model;
+using ClinicManager.Utilities;
 using ClinicManager.ViewModel;
 using Newtonsoft.Json;
 

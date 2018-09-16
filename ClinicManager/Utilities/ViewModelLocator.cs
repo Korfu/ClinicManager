@@ -1,6 +1,6 @@
 ﻿using ClinicManager.ViewModel;
 
-namespace ClinicManager
+namespace ClinicManager.Utilities
 {
     public static class ViewModelLocator
     {

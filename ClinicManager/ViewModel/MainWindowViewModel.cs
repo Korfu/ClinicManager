@@ -1,5 +1,5 @@
 ﻿using ClinicManager.Model;
-using ClinicManager.Utility;
+using ClinicManager.Utilities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

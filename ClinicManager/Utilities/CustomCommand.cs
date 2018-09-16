@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Input;
 
-namespace ClinicManager.Utility
+namespace ClinicManager.Utilities
 {
     public class CustomCommand : ICommand
     {
