@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClinicManager.Services
 {
-    public class DialogService
+    public class DialogService : IDialogService
     {
         private PatientDetailView _patientsDetialView;
 
@@ -21,5 +21,11 @@ namespace ClinicManager.Services
         }
 
 
+    }
+
+    public interface IDialogService
+    {
+        void ShowPatientDetailDialog();
+        void ClosePatientsDetailDialog();
     }
 }

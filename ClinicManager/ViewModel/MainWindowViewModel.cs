@@ -16,8 +16,8 @@ namespace ClinicManager.ViewModel
     {
         public ICommand EditCommand { get; set; }
 
-        private DialogService _dialogService;
-        private PatientDataService _patientDataService;
+        private IDialogService _dialogService;
+        private IPatientDataService _patientDataService;
 
         private void Edit(object param)
         {
@@ -35,8 +35,8 @@ namespace ClinicManager.ViewModel
             }
         }
 
-        public MainWindowViewModel(DialogService dialogService,
-                                      PatientDataService patientDataService)
+        public MainWindowViewModel(IDialogService dialogService,
+                                      IPatientDataService patientDataService)
         {
             _dialogService = dialogService;
             _patientDataService = patientDataService;
